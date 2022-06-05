@@ -1,0 +1,34 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+    //number of row and column in matrix    
+    int rowLength=matrix.size();
+    int colLength=matrix[0].size();
+   //declare array to mark cordinates of zeroes
+    int col[colLength];
+    int row[rowLength];
+    for(int i=0;i<colLength;i++){
+       col[i]=-1;               
+    }
+    for(int i=0;i<rowLength;i++){
+       row[i]=-1;               
+    }      
+        // mark cordinates of zeroes in declared arrays
+    for(int i=0;i<matrix.size();i++){
+        for(int j=0;j<matrix[0].size();j++){
+            if(matrix[i][j]==0){
+                row[i]=0;
+                col[j]=0;
+            }
+        }   
+      }
+    //make zeroes all the row and columns which are marked as zeroes
+    for(int i=0;i<rowLength;i++){
+        for(int j=0;j<colLength;j++){
+           if(row[i]==0 || col[j]==0){
+               matrix[i][j]=0;
+             }
+            }
+        }
+    }
+};
