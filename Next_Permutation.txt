@@ -1,0 +1,35 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int firstLowestIndex=-1;
+        int secondLowestIndex=-1;
+        
+        //finding first index whose element is less than it's next element
+        for(int i=nums.size()-2;i>=0;i--){
+            if(nums[i]<nums[i+1]){
+                firstLowestIndex=i;
+                break;
+            }
+        }
+        
+     //didn't find any element is less than it's next element
+        if(firstLowestIndex==-1){
+            reverse(nums.begin(),nums.end());
+        }
+        else{
+            // finding first element from last which is just greater than firstIndex element
+               for(int i=nums.size()-1;i>=0;i--){
+               if(nums[i]>nums[firstLowestIndex]){
+                 secondLowestIndex=i;
+                 break;
+            }
+        }
+            
+            //swapping both numbers
+            swap(nums[firstLowestIndex],nums[secondLowestIndex]);
+            //sorting numbers to arrange in lexigraphically
+            sort(nums.begin()+firstLowestIndex+1,nums.end());
+        }
+       
+    }
+};
