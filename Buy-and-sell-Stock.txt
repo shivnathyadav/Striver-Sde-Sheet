@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+int maximumProfit(vector<int> &prices){
+         int n=prices.size();
+        int minCost=1000000000;
+        //considering initial maximum profit is 0
+        int maxProfit=0;
+        for(int i=0;i<n;i++){
+            
+            //find minimum price of stock at any time
+            if(prices[i]<minCost){
+                minCost=prices[i];
+                }
+            // find profit at any time
+            int profit=prices[i]-minCost;
+            //check current profit is greater or less than previous maximum profit .. if greater than then storing to maximum profit
+            if(profit>maxProfit){
+                maxProfit=profit;
+            }
+        }
+        
+        return maxProfit;
+}
