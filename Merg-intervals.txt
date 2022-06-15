@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+     vector<vector<int>> ans;
+     sort(intervals.begin(),intervals.end());
+        //SORT the array based on first eleme nt of pair
+        int k=0;
+        vector<int> curr=intervals[0];
+        for(int i=1;i<intervals.size();i++){
+            //if first value of ith pair is greater than the second of curr then push the current and assign ith pair to current  
+            if(curr[1]<intervals[i][0]){
+                ans.push_back(curr);
+                curr=intervals[i];
+            }
+            else{
+                // store the max value in second of current
+                if(curr[1]>intervals[i][1]){
+                    curr[1]=curr[1];
+                }
+                else{
+                    curr[1]=intervals[i][1];
+                }
+            }
+        }
+        ans.push_back(curr);
+        return ans;
+    }
+};
