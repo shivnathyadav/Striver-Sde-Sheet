@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void merge(vector<int>& arr1, int m, vector<int>& arr2, int n) {
+      //compare with first element of second vector and   if found smaller element in second 
+        
+      //  then swap with element in first vector
+        
+        
+        
+    int j=0;
+    for(int i=0;i<m;i++){
+        if(n!=0){
+        if(arr1[i]>arr2[j]){
+            swap(arr1[i],arr2[j]);
+      
+        }
+              sort(arr2.begin(),arr2.end());
+    }
+    }
+        int z=0;
+        for(int k=m;k<m+n;k++){
+            arr1[k]=arr2[z];
+            z+=1;
+        }
+    }
+};
