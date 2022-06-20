@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        // apply binary search considering the length of array would be the equal to row*column
+        int left=0, right=matrix.size()*matrix[0].size()-1,mid;
+        if(matrix.size()==0)
+            return false;
+        while(left<=right){
+            mid=(left+right)/2;
+            if(matrix[mid/matrix[0].size()][mid%matrix[0].size()]==target){
+                return true;
+            }
+            else if(matrix[mid/matrix[0].size()][mid%matrix[0].size()]>target){
+                right=mid-1;
+            }
+            else{
+                left=mid+1;
+            }
+        }
+        return false;
+    }
+};
