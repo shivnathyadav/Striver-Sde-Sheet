@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+     int n=nums.size();
+        vector<int> vec;
+        unordered_map<int,int> mp;
+        mp.insert(pair<int,int>(nums[0],0));
+        for(int i=1;i<n;i++){
+            //search for key which is target-nums[i]
+            int key=target-nums[i];
+            if(mp.find(key)==mp.end()){
+                // if not found in map then insert it into map
+                mp.insert(pair<int,int>(nums[i],i));
+            }
+            else{
+                //if found in map then push it's index into vector
+                vec.push_back(i);
+                vec.push_back(mp.find(key)->second);
+                break;
+            }
+        }
+        return vec;
+    }
+};
